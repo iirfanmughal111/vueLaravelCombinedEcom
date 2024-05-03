@@ -11,6 +11,7 @@ export default function useProducts() {
         products.value = response.data.data;
     }
     const getProduct = async (id) => {
+        console.log('Product',id);
         const response = await axios.get('http://127.0.0.1:8000/api/products/'+id);
         product.value = response.data.data;
     }

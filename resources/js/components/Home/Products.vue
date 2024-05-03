@@ -6,11 +6,13 @@
 
       <v-col v-for="product in products" :key="product.id" cols="12" sm="4">
         <v-sheet class="ma-2 pa-2">
+          <router-link :to="{name:'productView',params: {id:product.id}}">
+
           <v-card class="mx-auto" max-width="400">
             <v-img
               class="align-end text-white"
               height="200"
-              :src="`/uploads/products/${product.featured_image}`"
+              :src="`/uploads/products/featured_images/${product.featured_image}`"
               cover
             >
               <v-card-title >
@@ -22,7 +24,7 @@
               </v-card-title>
             </v-img>
 
-            <v-card-subtitle class="pt-4"> {{ product.category.title }} </v-card-subtitle>
+            <v-card-subtitle class="pt-4"> {{ product.category ? product.category.title : 'uncategorized'}} </v-card-subtitle>
 
             <v-card-text>
               <div>{{ product.short_description }} </div>
@@ -43,6 +45,8 @@
               variant="text"></v-btn>
             </v-card-actions>
           </v-card>
+        </router-link>
+
         </v-sheet>
       </v-col>
 

@@ -38,6 +38,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $product = Product::with(['Tags','Category','Gallery'])->findOrFail($product->id);
         return new ProductResource($product);
     }
 
